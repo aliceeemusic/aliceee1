@@ -1,0 +1,50 @@
+body 
+
+{
+  background-color: #ffffff;
+  font-family: arial;
+  font-size: large;
+  color:#ffd900;
+  }
+
+
+
+
+
+  #box2 {
+  height: 1000;
+  width: 10px;
+  background: #ffd850;
+  float: right;
+
+
+}
+  #box3 {
+    height: 10px;
+    width: 10px;
+    background: #ffe550;
+    float: right;
+  }
+    #box4 {
+      height: 1000px;
+      width: 1000px;
+      background: #0059ff;
+      float: right;
+}
+
+div.container4 {
+  height: 50em;
+  position: relative }
+div.container4 p {
+  margin: 0;
+  position: absolute;
+  color:#ffe550;
+  font-size:200px;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%) }
+
+
+
+
