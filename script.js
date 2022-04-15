@@ -15,7 +15,7 @@ const durTime = document.querySelector('#durTime');
 const songs = ['technicoloursupersong'];
 
 // Keep track of song
-let songIndex = 3;
+let songIndex = 0;
 
 // Initially load song details into DOM
 loadSong(songs[songIndex]);
