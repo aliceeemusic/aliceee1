@@ -17,12 +17,12 @@ body
 }
 .music-container {
    
-    border-radius: 15px;
-    box-shadow: 0 1px 1px 0 #ff006a;
+    border-radius: 0px;
+    box-shadow: 0 20px 20px 0 #ff006a;
     display: flex;
     padding: 20px 20px;
     position: relative;
-    margin: 100px 0;
+    margin: 500px 0;
     z-index: 10;
   }
   
@@ -69,9 +69,9 @@ body
   }
   
   .action-btn {
-    background-color:#f1ff2f00;
+    background-color:#ffffff00;
     border: 0;
-    color: #ffffff50;
+    color: #ff00ea;
     font-size: 20px;
     cursor: progress;
     padding: 10px;
@@ -79,12 +79,13 @@ body
   }
   
   .action-btn.action-btn-big {
-    color: #ffffff80;
+    color: #ff00ea;
     
     font-size: 20px;
   }
   
   .action-btn:focus {
+    background-color:#f82fff;
     outline: 0;
   }
   
