@@ -3,6 +3,7 @@
 }
 body 
 
+
 {
 
   
@@ -16,6 +17,20 @@ body
   align-items: center;
   justify-content:center;   
 }
+
+
+.example1 {
+border-radius: 50%;
+  background-color: rgba(249, 77, 255, 0.473);
+  height: 500px;
+    width: 500px;
+    top: 0;
+    left: 0;
+    position: absolute;
+    cursor:url(images/pointeryellow.png),auto;
+}
+
+
 .music-container {
    
     border-radius: 0px;
@@ -31,9 +46,28 @@ body
   .img-container {
     position: relative;
     width: 110px;
+    
   }
   
  
+  .playlist{
+    list-style: none;
+
+  
+
+   
+}
+.playlist li a{
+    color:rgb(0, 195, 255);
+    text-decoration: none;
+  
+
+}
+.playlist .current-song a{
+    color:rgb(255, 255, 255);
+  
+}
+
   
   .img-container img {
     border-radius: 50%;
@@ -46,12 +80,14 @@ body
     animation: rotate 1s alternate infinite;
     cursor: url(images/pointeryellow.png),auto;
     animation-play-state: paused;
+    
   }
   
   .music-container.play .img-container img {
     animation-play-state: running;
   }
-  
+
+
   @keyframes rotate {
     from {
       transform: rotate(0deg);
@@ -80,6 +116,7 @@ body
     cursor: progress;
     padding: 10px;
     margin: 0 20px;
+    
   }
   
   .action-btn.action-btn-big {
@@ -163,3 +200,64 @@ background: var (--bg-color);
           left: 2%
       }
   }
+
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+ 
+  }
+ 
+  ul {
+    list-style: none;
+  }
+  .context-menu { 
+    position: absolute; 
+    
+  } 
+  .menu {
+    display: flex;
+
+   
+    flex-direction: column;
+    background-color: rgb(65, 242, 255);
+    cursor: url(images/pointeryellow.png),auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgb(64 64 64 / 5%);
+    padding: 10px 0;
+    
+
+  }
+  .menu > li > a {
+    font: inherit;
+    border: 0;
+    padding: 10px 30px 10px 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: unset;
+    color: #000;
+    font-weight: 500;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    z-index: 1;
+  }
+  .menu > li > a:hover {
+    background:#d400ff49;
+    color: #ffee00;
+    cursor: url(images/pointeryellow.png),auto;
+  }
+  .menu > li > a > i {
+    padding-right: 10px;
+  }
+  .menu > li.trash > a:hover {
+    color: red;
+  }
+  
+  

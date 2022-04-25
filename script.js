@@ -12,22 +12,69 @@ const cover = document.getElementById('cover');
 const currTime = document.querySelector('#currTime');
 const durTime = document.querySelector('#durTime');
 
-// Song titles
-const songs = ['technicoloursupersong'];
 
-// Keep track of song
-let songIndex = 0;
+const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress'];
 
-// Initially load song details into DOM
+
+let songIndex = 1;
+
+
+const shuffleArray = array => {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    const temp = array[i];
+    array[i] = array[j];
+    array[j] = temp;
+  }
+}
+
+
 loadSong(songs[songIndex]);
 
-// Update song details 
 function loadSong(song) {
   title.innerText = song;
   audio.src = `music/${song}.mp3`;
   cover.src = `images/${song}.png`;
+  
 }
 
+function audioPlayer(){
+    var currentSong = 0;
+    $("#audio")[0].src = $("#playlist li a")[0];
+
+    $("#audio")[0].pause();
+    $("#playlist li a").click(function(e){
+       e.preventDefault(); 
+       $("#audio")[0].src = this;
+       $("#audio")[0].play();
+	  
+       $("#playlist li").removeClass("current-song");
+        currentSong = $(this).parent().index();
+        $(this).parent().addClass("current-song");
+    });
+
+	audioPlayer.addEventListener('click', () => {
+		const isPlaying = musicContainer.classList.contains('play');
+	  
+		if (isPlaying) {
+		  pauseSong();
+		} else {
+		  playSong();
+		}
+	  });
+    
+    $("#audio")[0].addEventListener("ended", function(){
+       currentSong++;
+        if(currentSong == $("#playlist li a").length)
+            currentSong = 0;
+        $("#playlist li").removeClass("current-song");
+        $("#playlist li:eq("+currentSong+")").addClass("current-song");
+        $("#audio")[0].src = $("#playlist li a")[currentSong].href;
+        $("#audio")[0].play();
+    });
+
+    
+}
 // Play song
 function playSong() {
   musicContainer.classList.add('play');
@@ -35,9 +82,9 @@ function playSong() {
   playBtn.querySelector('i.fas').classList.add('fa-pause');
 
   audio.play();
-}
 
-// Pause song
+  
+}
 function pauseSong() {
   musicContainer.classList.remove('play');
   playBtn.querySelector('i.fas').classList.add('fa-play');
@@ -46,7 +93,7 @@ function pauseSong() {
   audio.pause();
 }
 
-// Previous song
+
 function prevSong() {
   songIndex--;
 
@@ -88,18 +135,17 @@ function setProgress(e) {
   audio.currentTime = (clickX / width) * duration;
 }
 
-//get duration & currentTime for Time of song
+
 function DurTime (e) {
 	const {duration,currentTime} = e.srcElement;
 	var sec;
 	var sec_d;
 
-	// define minutes currentTime
 	let min = (currentTime==null)? 0:
 	 Math.floor(currentTime/60);
 	 min = min <10 ? '0'+min:min;
 
-	// define seconds currentTime
+
 	function get_sec (x) {
 		if(Math.floor(x) >= 60){
 			
@@ -114,6 +160,9 @@ function DurTime (e) {
 		 	sec = sec <10 ? '0'+sec:sec;
 		 }
 	} 
+
+
+  
 
 	get_sec (currentTime,sec);
 
@@ -142,16 +191,15 @@ function DurTime (e) {
 		 }
 	} 
 
-	// define seconds duration
 	
 	get_sec_d (duration);
 
-	// change duration DOM
+
 	durTime.innerHTML = min_d +':'+ sec_d;
 		
 };
 
-// Event listeners
+
 playBtn.addEventListener('click', () => {
   const isPlaying = musicContainer.classList.contains('play');
 
@@ -161,6 +209,8 @@ playBtn.addEventListener('click', () => {
     playSong();
   }
 });
+
+
 
 // Change song
 prevBtn.addEventListener('click', prevSong);
@@ -177,4 +227,6 @@ audio.addEventListener('ended', nextSong);
 
 // Time of song
 audio.addEventListener('timeupdate',DurTime);
+
+
 

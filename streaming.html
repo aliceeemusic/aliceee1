@@ -6,12 +6,58 @@
   
 
   <body>
+
+    
+
     <link
     rel="stylesheet"
     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
   />
     <h1></h1>
-       
+       <meta charset="UTF-8" />
+    <title>Custom Right Click Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+   
+  </head>
+  <body>  
+    <div id="contextMenu" class="context-menu" style="display: none"> 
+        <ul class="menu"> 
+          
+            <li class="share"><a href="#"><i class="fa fa-share" aria-hidden="true"></i> hello</a></li> 
+            <li class="rename"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> how</a></li> 
+            <li class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i> are</a></li> 
+            <li class="copy"><a href="#"><i class="fa fa-copy" aria-hidden="true"></i> you</a></li> 
+            <li class="paste"><a href="#"><i class="fa fa-paste" aria-hidden="true"></i> feeling?</a></li> 
+            
+        </ul> 
+    </div> 
+
+    
+
+    <script>
+       document.onclick = hideMenu; 
+       document.oncontextmenu = rightClick; 
+
+        function hideMenu() { 
+            document.getElementById("contextMenu") 
+                    .style.display = "none" 
+        } 
+
+        function rightClick(e) { 
+            e.preventDefault(); 
+
+            if (document.getElementById("contextMenu") .style.display == "block"){ 
+                hideMenu(); 
+            }else{ 
+                var menu = document.getElementById("contextMenu")      
+                menu.style.display = 'block'; 
+                menu.style.left = e.pageX + "px"; 
+                menu.style.top = e.pageY + "px"; 
+            } 
+        } 
+    </script>
 
     <div class="music-container" id="music-container">
       <div class="music-info">
@@ -20,11 +66,14 @@
           <div class="progress" id="progress"></div>
         </div>
       </div>
+    
+      <audio src="" id="audio"></audio>
 
-      <audio src="music/technicoloursupersong.mp3" id="audio"></audio>
+      
 
       <div class="img-container">
-        <img src="images/technicoloursupersong.png" alt="music-cover" id="cover" />
+        <img src="images/" alt="music-cover" id="cover" />
+      
       </div>
       <div class="navigation">
         <button id="prev" class="action-btn">
@@ -41,9 +90,22 @@
         </button>
         
       </div>
+
+
+      
     </div>
 
-    
+
+    <div class="example1" id="example1">
+      <p>.</p>
+    </div>
+
+
+
+
+      // loads the audio player
+      audioPlayer();
+  </script>
      
 <h3>
   aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicealiceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alice
@@ -151,7 +213,7 @@
     <style>
      
 
-    html::-webkit-scrollbar{
+   html::-webkit-scrollbar{
       width: 50px;
     }
 html::-webkit-scrollbar-thumb{
