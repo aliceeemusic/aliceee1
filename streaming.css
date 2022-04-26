@@ -18,17 +18,17 @@ body
   justify-content:center;   
 }
 
-
-.example1 {
-border-radius: 50%;
-  background-color: rgba(249, 77, 255, 0.473);
-  height: 500px;
-    width: 500px;
-    top: 0;
-    left: 0;
-    position: absolute;
-    cursor:url(images/pointeryellow.png),auto;
+#a {
+  float: left;
+  position: relative;
+  top: 100px;
+  left: 1500px;
+  width: 2000px;
+  height: 30px;
+  text-align: left;
+  z-index: 1000;
 }
+
 
 
 .music-container {
