@@ -18,8 +18,9 @@ body
   justify-content:center;   
 }
 
-#a {
+#songlist {
   float: left;
+
   position: relative;
   top: 100px;
   left: 1500px;
@@ -27,8 +28,9 @@ body
   height: 30px;
   text-align: left;
   z-index: 1000;
-}
 
+
+}
 
 
 .music-container {
@@ -60,12 +62,12 @@ body
 .playlist li a{
     color:rgb(0, 195, 255);
     text-decoration: none;
-  
+    cursor: url(images/pointeryellow.png),auto;
 
 }
 .playlist .current-song a{
     color:rgb(255, 255, 255);
-  
+    cursor: url(images/pointeryellow.png),auto;
 }
 
   

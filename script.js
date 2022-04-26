@@ -16,7 +16,7 @@ const durTime = document.querySelector('#durTime');
 const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress'];
 
 
-let songIndex = 1;
+let songIndex = 0;
 
 
 
@@ -39,6 +39,7 @@ function audioPlayer(){
        e.preventDefault(); 
        $("#audio")[0].src = this;
        $("#audio")[0].play();
+       
 	  
        $("#playlist li").removeClass("current-song");
         currentSong = $(this).parent().index();
