@@ -3,6 +3,7 @@ const musicContainer = document.getElementById('music-container');
 const playBtn = document.getElementById('play');
 const prevBtn = document.getElementById('prev');
 const nextBtn = document.getElementById('next');
+const playlistChildrenEl = document.querySelectorAll('#playlist li a');
 
 const audio = document.getElementById('audio');
 const progress = document.getElementById('progress');
@@ -11,20 +12,29 @@ const title = document.getElementById('title');
 const cover = document.getElementById('cover');
 const currTime = document.querySelector('#currTime');
 const durTime = document.querySelector('#durTime');
+const songlist = document.querySelector('#songlist');
+const playlist = document.querySelector('#playlist');
 
 
-const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress'];
+const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress', 'superbrightneonlight', 'neverbetter','eye', 'musicfornotachoir','walkinghomealone', 'ifitmeansthatimnothappy', 'pin', 'pinkneonlight', 'heartbroken', 'popsongsforpornstars', 'breakthrough', 'variationinterlude', 'underthelights','boy', 'allilluse', 'hyperbandpopedit', '...summertime', 'argument', 'anti', 'strings', 'blueintothecity', 'settingup'];
 
 
 let songIndex = 0;
 
 
-
+playlistChildrenEl.forEach(
+  childEl =>
+  childEl.addEventListener('click', () => {
+    // Your play function
+    const isPlaying = musicContainer.classList.contains('play');
+    isPlaying ? playSong() : playSong();
+  })
+);
 
 loadSong(songs[songIndex]);
 
 function loadSong(song) {
-  title.innerText = song;
+
   audio.src = `music/${song}.mp3`;
   cover.src = `images/${song}.png`;
   
