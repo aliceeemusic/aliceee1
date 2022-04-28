@@ -16,7 +16,7 @@ const songlist = document.querySelector('#songlist');
 const playlist = document.querySelector('#playlist');
 
 
-const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress', 'superbrightneonlight', 'neverbetter','eye', 'musicfornotachoir','walkinghomealone', 'ifitmeansthatimnothappy', 'pin', 'pinkneonlight', 'heartbroken', 'popsongsforpornstars', 'breakthrough', 'variationinterlude', 'underthelights','boy', 'allilluse', 'hyperbandpopedit', '...summertime', 'argument', 'anti', 'strings', 'blueintothecity', 'settingup'];
+const songs = ['technicoloursupersong', 'ultraflowerpopsong','afakesprogress', 'superbrightneonlight', 'neverbetter','eye', 'musicfornotachoir','walkinghomealone', 'ifitmeansthatimnothappy', 'pin', 'pinkneonlight', 'heartbroken', 'popsongsforpornstars', 'breakthrough', 'variationinterlude', 'underthelights','boy', 'allilluse', 'hyperbandpopedit', 'summertimesong', 'argument', 'anti', 'strings', 'blueintothecity', 'settingup'];
 
 
 let songIndex = 0;
@@ -108,6 +108,9 @@ function prevSong() {
 
   playSong();
 }
+
+
+
 
 // Next song
 function nextSong() {
