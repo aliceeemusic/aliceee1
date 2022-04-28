@@ -36,7 +36,7 @@ loadSong(songs[songIndex]);
 function loadSong(song) {
 
   audio.src = `music/${song}.mp3`;
-  cover.src = `images/${song}.png`;
+  cover.src = `images/technicoloursupersong.png`;
   
 }
 
