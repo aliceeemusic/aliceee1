@@ -3,6 +3,7 @@
 }
 
 
+
 body 
 
 
@@ -36,7 +37,6 @@ body
 
 
 
-
 .music-container {
    
     border-radius: 0px;
@@ -48,21 +48,63 @@ body
     z-index: 10;
    
   }
-  
+
+  @media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {  .music-container {
+top: 250px;
+left: 10px;
+  position: fixed;
+}
+}
+
+
+
   .img-container {
     position: relative;
     width: 110px;
     
   }
-  
+
   #title {
 top: 0;
     font-size: 300px;
     color: rgb(253, 255, 117);
     position: fixed;
+
+
+  }
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {  #title {
+top: 0px;
+left: 0px;
+align-items: center;
+
+    font-size: 60px;
+    color: rgb(253, 255, 117);
+    position: fixed;
   }
 
 
+}
+@media (orientation: landscape) 
+
+and (min-device-width: 650px) 
+and (max-device-width: 900px)
+and (-webkit-min-device-pixel-ratio: 2) {  #title {
+top: 0px;
+left: 0px;
+align-items: center;
+
+  font-size: 60px;
+  color: rgb(253, 255, 117);
+  position: fixed;
+
+}
+}
 
   .playlist{
     list-style: none;
@@ -83,6 +125,18 @@ top: 0;
     cursor: url(images/pointeryellow.png),auto;
 }
 
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {  .playlist {
+top: 110px;
+left: 10px;
+  font-size: 20px;
+  position: fixed;
+}
+
+
+}
   
   .img-container img {
     border-radius: 50%;
@@ -215,6 +269,35 @@ background: var (--bg-color);
       animation: typewriter 10s ease-in-out infinite;
   }
 
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {  h3 {
+top: 0px;
+left: 0px;
+font-size: small;
+  position: fixed;
+  animation: infinite;
+
+}
+
+
+}
+
+@media (orientation: landscape) 
+
+and (-webkit-min-device-pixel-ratio: 2) {  h3 {
+top: 0px;
+left: 0px;
+font-size: small;
+  position: fixed;
+  animation: infinite;
+
+}
+
+
+}
   @keyframes typewriter {
       to {
           left: 2%
