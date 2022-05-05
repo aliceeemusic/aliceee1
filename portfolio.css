@@ -1,0 +1,341 @@
+* {
+  box-sizing: border-box;
+}
+
+
+
+body 
+
+
+{
+
+  
+  background-color: #ffe550;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: large;
+  color:#ffe550;
+  cursor: url(images/pointer.png),auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;   
+}
+
+#songlist {
+  float: left;
+
+  position: relative;
+  top: 100px;
+  left: 1500px;
+  width: 2000px;
+  height: 30px;
+  text-align: left;
+  z-index: 1000;
+
+
+}
+
+
+
+.music-container {
+   
+    border-radius: 0px;
+    box-shadow: 0 20px 20px 0 #ff006a;
+    display: flex;
+    padding: 20px 20px;
+    position: relative;
+    margin: 500px 0;
+    z-index: 10;
+   
+  }
+
+  @media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {  .music-container {
+top: 250px;
+left: 10px;
+  position: fixed;
+}
+}
+
+
+
+  .img-container {
+    position: relative;
+    width: 110px;
+    
+  }
+
+  #title {
+top: 0;
+    font-size: 300px;
+    color: rgb(253, 255, 117);
+    position: fixed;
+
+
+  }
+  @media only screen 
+  and (min-device-width: 320px) 
+  and (max-device-width: 480px)
+  and (-webkit-min-device-pixel-ratio: 2) {  #title {
+top: 0px;
+left: 0px;
+align-items: center;
+
+    font-size: 60px;
+    color: rgb(253, 255, 117);
+    position: fixed;
+  }
+
+
+}
+@media (orientation: landscape) 
+
+and (min-device-width: 650px) 
+and (max-device-width: 900px)
+and (-webkit-min-device-pixel-ratio: 2) {  #title {
+top: 0px;
+left: 0px;
+align-items: center;
+
+  font-size: 60px;
+  color: rgb(253, 255, 117);
+  position: fixed;
+
+}
+}
+
+  .playlist{
+    list-style: none;
+
+ 
+}
+
+.playlist li a{
+    color:rgb(0, 195, 255);
+    text-decoration: none;
+    cursor: url(images/pointeryellow.png),auto;
+  
+}
+
+
+.playlist .current-song a{
+    color:rgb(255, 255, 255);
+    cursor: url(images/pointeryellow.png),auto;
+}
+
+@media only screen 
+and (min-device-width: 320px) 
+and (max-device-width: 480px)
+and (-webkit-min-device-pixel-ratio: 2) {  .playlist {
+top: 110px;
+left: 10px;
+  font-size: 20px;
+  position: fixed;
+}
+
+
+}
+  
+  .img-container img {
+    border-radius: 50%;
+    object-fit: cover;
+    height: 110px;
+    width: inherit;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    animation: rotate 1s alternate infinite;
+    cursor: url(images/pointeryellow.png),auto;
+    animation-play-state: paused;
+    
+  }
+  
+  .music-container.play .img-container img {
+    animation-play-state: running;
+  }
+
+
+  @keyframes rotate {
+    from {
+      transform: rotate(0deg);
+    }
+  
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  
+  
+  
+  .navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+   
+  }
+  
+  .action-btn {
+    background-color:#ffffff00;
+    border: 0;
+    color: #ff00ea;
+    font-size: 20px;
+    cursor: progress;
+    padding: 10px;
+    margin: 0 20px;
+    
+  }
+  
+  .action-btn.action-btn-big {
+    color: #ff00ea;
+    
+    font-size: 20px;
+  }
+  
+  .action-btn:focus {
+    background-color:#f82fff;
+    outline: 0;
+  }
+  
+  .music-info {
+    background-color: rgba(255, 255, 255, 0);
+    border-radius: 5px 5px 0 0;
+    position: absolute;
+    top: 0;
+   
+    left: 20px;
+    width: calc(100% - 40px);
+    padding: 10px 10px 10px 150px;
+    opacity: 0;
+    transform: translateY(0%);
+    transition: transform 0.3s ease-in, opacity 1s ease-in;
+    z-index: 0;
+    color:#fff27b
+  }
+  
+  .music-container.play .music-info {
+    opacity: 1;
+    transform: translateY(-100%);
+  }
+  
+.playlist.action-btn
+
+  .music-info h4 {
+    margin: 0;
+  }
+  
+  .progress-container {
+    background: #3cffdf;
+    border-radius: 2px;
+    cursor: pointer;
+    margin: 10px 0;
+    height: 4px;
+    width: 100%;
+    cursor: url(images/pointerblue.png),auto;
+  }
+  
+  .progress {
+    background-color: #fffd7a;
+    border-radius: 5px;
+    height: 100%;
+    width: 0%;
+    transition: width 0.1s linear;
+    
+  }
+h3 {margin: 0;
+font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
+min height 100vh
+display grid;
+place-content: center;
+text-align: center;
+background: var (--bg-color);
+;}
+
+  h3::before,
+  h3::after {
+      content: "aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.  aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceeealiceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.  aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee. aliceee.  ";
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      animation: infinite;
+  }
+
+  h3::before{
+      background: rgba(0, 128, 128, 0);
+      animation: typewriter 10s ease-in-out infinite;
+  }
+
+
+    
+
+  @keyframes typewriter {
+      to {
+          left: 2%
+      }
+  }
+
+
+  * {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+ 
+  }
+ 
+  ul {
+    list-style: none;
+  }
+  .context-menu { 
+    position: absolute; 
+    
+  } 
+  .menu {
+    display: flex;
+
+   
+    flex-direction: column;
+    background-color: rgb(65, 242, 255);
+    cursor: url(images/pointeryellow.png),auto;
+    border-radius: 20px;
+    box-shadow: 0 10px 20px rgb(64 64 64 / 5%);
+    padding: 10px 0;
+    
+
+  }
+  .menu > li > a {
+    font: inherit;
+    border: 0;
+    padding: 10px 30px 10px 15px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    text-decoration: unset;
+    color: #000;
+    font-weight: 500;
+    transition: 0.5s linear;
+    -webkit-transition: 0.5s linear;
+    -moz-transition: 0.5s linear;
+    -ms-transition: 0.5s linear;
+    -o-transition: 0.5s linear;
+    z-index: 1;
+  }
+  .menu > li > a:hover {
+    background:#d400ff49;
+    color: #ffee00;
+    cursor: url(images/pointeryellow.png),auto;
+  }
+  .menu > li > a > i {
+    padding-right: 10px;
+  }
+  .menu > li.trash > a:hover {
+    color: red;
+  }
+  
+  

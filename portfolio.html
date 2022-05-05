@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+
+    <link rel="stylesheet" href="portfolio.css" />
+<div id="wrap">
+  <!-- Everything inside body. -->
+</div>
+  </head>
+  
+
+  <body>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>aliceee</title>
+  
+    <div id="title">
+      <h1>aliceee</h1>
+    </div>
+<div id="songlist">
+
+  <ul class="playlist" id="playlist">
+    <li class="current-song"><a href="music/technicoloursupersong.mp3">technicoloursupersong</a></li>
+    <li><a href="music/ultraflowerpopsong.mp3">ultraflowerpopsong </a></li>
+    <li><a href="music/afakesprogress.mp3">afakesprogress</a></li>
+    <li><a href="music/superbrightneonlight.mp3">superbrightneonlight</a></li>
+    <li><a href="music/neverbetter.mp3">neverbetter</a></li>
+    <li><a href="music/eye.mp3">eye</a></li>
+    <li><a href="music/musicfornotachoir.mp3">musicfornotachoir</a></li>
+    <li><a href="music/walkinghomealone.mp3">walkinghomealone</a></li>
+    <li><a href="music/ifitmeansthatimnothappy.mp3">ifitmeansthatimnothappy</a></li>
+    <li><a href="music/pin.mp3">pin</a></li>
+    <li><a href="music/pinkneonlight.mp3">pinkneonlight</a></li>
+ 
+    <li><a href="music/heartbroken.mp3">heartbroken</a></li>
+    <li><a href="music/popsongsforpornstars.mp3">popsongsforpornstars</a></li>
+    <li><a href="music/breakthrough.mp3">breakthrough</a></li>
+    <li><a href="music/variationinterlude.mp3">variation/interlude</a></li>
+    <li><a href="music/underthelights.mp3">underthelights</a></li>
+    <li><a href="music/boy.mp3">boy</a></li>
+   <li><a href="music/allilluse.mp3">allilluse</a></li>
+<li><a href="music/hyperbandpopedit.mp3">hyperbandpopedit</a></li>
+<li><a href="music/summertimesong.mp3">...summertimesong</a></li>
+<li><a href="music/argument.mp3">argument</a></li>
+<li><a href="music/anti.mp3">anti</a></li>
+<li><a href="music/strings.mp3">strings</a></li>
+<li><a href="music/blueintothecity.mp3">blue/intothecity</a></li>
+<li><a href="music/settingup.mp3">settingup</a></li>
+
+
+
+VIDEOS
+
+<video width="320" height="240" controls>
+  <source src="neverbetter.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+<video width="320" height="240" controls>
+  <source src="heartbroken.mp4" type="video/mp4">
+Your browser does not support the video tag.
+</video>
+
+
+
+
+
+
+</ul>
+
+
+</div>
+    
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.2/css/all.min.css"
+  />
+    <h1></h1>
+       <meta charset="UTF-8" />
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+   
+  </head>
+  <body>  
+    <div id="a"></div>
+    <div id="contextMenu" class="context-menu" style="display: none"> 
+        <ul class="menu"> 
+          
+            <li class="share"><a href="#"><i class="fa fa-share" aria-hidden="true"></i> hello</a></li> 
+            <li class="rename"><a href="#"><i class="fa fa-pencil" aria-hidden="true"></i> how</a></li> 
+            <li class="link"><a href="#"><i class="fa fa-link" aria-hidden="true"></i> are</a></li> 
+            <li class="copy"><a href="#"><i class="fa fa-copy" aria-hidden="true"></i> you</a></li> 
+            <li class="paste"><a href="#"><i class="fa fa-paste" aria-hidden="true"></i> feeling?</a></li> 
+            
+        </ul> 
+    </div> 
+
+    
+
+    <script>
+       document.onclick = hideMenu; 
+       document.oncontextmenu = rightClick; 
+
+        function hideMenu() { 
+            document.getElementById("contextMenu") 
+                    .style.display = "none" 
+        } 
+
+        function rightClick(e) { 
+            e.preventDefault(); 
+
+            if (document.getElementById("contextMenu") .style.display == "block"){ 
+                hideMenu(); 
+            }else{ 
+                var menu = document.getElementById("contextMenu")      
+                menu.style.display = 'block'; 
+                menu.style.left = e.pageX + "px"; 
+                menu.style.top = e.pageY + "px"; 
+            } 
+        } 
+    </script>
+
+    <div class="music-container" id="music-container">
+      <div class="music-info">
+        <h4 id="title"></h4>
+        <div class="progress-container" id="progress-container">
+          <div class="progress" id="progress"></div>
+        </div>
+      </div>
+    
+      <audio src="" id="audio"></audio>
+
+      
+
+      <div class="img-container">
+        <img src="images/" alt="music-cover" id="cover" />
+      
+      </div>
+      <div class="navigation">
+        <button id="prev" class="action-btn">
+          <i class="fas fa-backward"></i>
+     
+        </button>
+        <button id="play" class="action-btn action-btn-big">
+          <i class="fas fa-play"></i>
+      
+        </button>
+        <button id="next" class="action-btn">
+          <i class="fas fa-forward"></i>
+   
+        </button>
+        
+      </div>
+
+
+      
+    </div>
+
+
+    <div class="example1" id="example1">
+      <p>.</p>
+    </div>
+
+
+
+ 
+  <script src="https://code.jquery.com/jquery-2.2.0.js"></script>
+  <script src="portfolioscript.js"></script>
+  <script>
+      // loads the audio player
+      audioPlayer();
+  </script>
+     
+<h3>
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicealiceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alice
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicaliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee. aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicealiceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alice
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicaliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.a aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicealiceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alice
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicaliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicealiceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alice
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alicaliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.a
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.a
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic ceee.aliceee.
+  aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.aliceee.alic
+  ceee.aliceee.
+</h3>
+        
+
+    <style>
+     
+
+   html::-webkit-scrollbar{
+      width: 50px;
+    }
+html::-webkit-scrollbar-thumb{
+  background-color: #ff00f2;}
+
+html::-webkit-scrollbar-track
+{background-color: #ffe500;}
+  
+  @-webkit-keyframes argh-my-eyes {
+    0%   { background-color: #ffe550; }
+    49% { background-color: #ffe500; }
+    50% { background-color: #ffe588; }
+    99% { background-color: #ffe550; }
+    100% { background-color: #ffe400; }
+  }
+  @-moz-keyframes argh-my-eyes {
+    0%   { background-color: #ffe550; }
+    49% { background-color: #ffe200; }
+    50% { background-color: #ffe588; }
+    99% { background-color: #ffe100; }
+    100% { background-color: #ffe200; }
+  }
+  @keyframes argh-my-eyes {
+    0%   { background-color: #ffe400; }
+    49% { background-color: #ffe300; }
+    50% { background-color: #ffe588; }
+    99% { background-color: #ffe500; }
+    100% { background-color: #ffe550; }
+  }
+  body {
+  -webkit-animation: argh-my-eyes 1s infinite;
+  -moz-animation:    argh-my-eyes 1s infinite;
+  animation:         argh-my-eyes 5s infinite;
+}
+
+
+</style>
+
+    <script src="portfolioscript.js"></script>
+  </body>
+</html>
