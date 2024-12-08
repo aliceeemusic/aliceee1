@@ -3,70 +3,120 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Seamless Audio Switch</title>
+  <title>player.</title>
   <style>
+    /* Body Styling */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
-      background-color: #ffd900;
-      color: #333;
+      color: #ffd900;
       margin: 0;
       padding: 0;
       height: 100vh;
+      background-color: rgba(255, 231, 97, 255);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
     }
 
+    /* Title Styling */
     h1 {
-      color: #fff;
+      color: #ffff88;
       font-size: 2.5rem;
       margin-bottom: 40px;
     }
 
-    button {
+    /* Play/Pause Button Styling */
+    #playPause {
       width: 120px;
-      height: 50px;
+      height: 120px;
       background: #ffe550;
       border: none;
-      border-radius: 8px;
+      border-radius: 50%;
+      box-shadow: 0px 4px 10px rgba(255, 133, 12, 0.4);
       cursor: pointer;
-      font-size: 18px;
+      font-size: 24px;
       font-weight: bold;
-      color: #000;
-      margin-bottom: 20px;
+      color: rgb(0, 0, 0);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 40px;
     }
 
-    button:active {
-      background: #ffd700;
+    #playPause:active {
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4), inset 0px 2px 6px rgba(255, 255, 255, 0.3);
     }
 
+    /* Dial Styling */
     #randomnessControl {
-      margin-top: 20px;
+        width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ffe5500 0%, #ffe550 80%);
+      border-radius: 50%;
+      box-shadow: rgba(255, 133, 12, 0.4);
+      position: relative;
+      margin-bottom: 40px;
+      transition: box-shadow 0.2s;
+    }
+
+    #randomnessControl.active {
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3), 
+                  inset 0px 5px 15px rgba(255, 255, 255, 0.5), 
+                  0px 0px 20px rgba(255, 238, 0, 0.8); /* Yellow glow */
+    }
+
+    #dialKnob {
+      width: 20px;
+      height: 20px;
+      background: #ffe550;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 90px;
+      transform-origin: 50% 90px;
+      transform: rotate(0deg);
+    }
+
+    #dialDot {
+      width: 8px;
+      height: 8px;
+      background: #ffdc19;
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+    }
+
+    /* Randomness Level Label */
+    #label {
+      font-size: 18px;
+      color: #fff129;
     }
   </style>
 </head>
 <body>
-  <h1>1Seamless WAV Player</h1>
-  <button id="playPause">Play</button>
-  <p id="status">Status: Stopped</p>
+  <h1>player.</h1>
+  <button id="playPause"></button>
+  <p id="status">stopped</p>
+
   <div id="randomnessControl">
-    <label for="randomness">Randomness Level: </label>
-    <input type="range" id="randomness" min="1" max="10" value="5">
-    <span id="randomnessValue">5</span>
+    <div id="dialKnob">
+      <div id="dialDot"></div>
+    </div>
   </div>
+  <p id="label">randomness: 5</p>
 
   <script>
-    const songFiles = ["song1.mp3", "song2.mp3", "song3.mp3"]; // Replace with actual file paths
+    const songFiles = ["song1.wav", "song2.wav", "song3.wav"]; // Replace with actual .wav file paths
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audioBuffers = [];
     let isPlaying = false;
     let currentSource = null;
-    let currentStartTime = 0;
     let playbackStartTime = 0;
-    let switchInterval = null;
-    let randomnessLevel = 5; // Default randomness level
+    let switchTimeout = null;
+    let randomnessLevel = 5;
 
     async function loadAudioFiles() {
       for (const file of songFiles) {
@@ -89,15 +139,15 @@
     function switchTrack() {
       const activeIndex = Math.floor(Math.random() * audioBuffers.length);
       const elapsedTime = audioContext.currentTime - playbackStartTime;
+
       if (currentSource) currentSource.stop();
 
       currentSource = playBuffer(audioBuffers[activeIndex], elapsedTime);
       console.log(`Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s`);
 
-      // Adjust switching interval based on randomness level
-      const interval = Math.random() * (2000 / randomnessLevel) + (1000 / randomnessLevel);
-      clearInterval(switchInterval);
-      switchInterval = setTimeout(switchTrack, interval);
+      const nextSwitchTime = Math.random() * (2000 / randomnessLevel) + (1000 / randomnessLevel);
+      clearTimeout(switchTimeout);
+      switchTimeout = setTimeout(switchTrack, nextSwitchTime);
     }
 
     document.getElementById("playPause").addEventListener("click", async () => {
@@ -108,24 +158,52 @@
         currentSource = playBuffer(audioBuffers[0], 0);
         isPlaying = true;
 
-        document.getElementById("status").innerText = "Status: Playing";
-        document.getElementById("playPause").innerText = "Pause";
+        document.getElementById("status").innerText = "playing...";
+        document.getElementById("playPause").innerText = "pause";
 
-        switchTrack(); // Start switching
+        switchTrack();
       } else {
         if (currentSource) currentSource.stop();
-        clearTimeout(switchInterval);
+        clearTimeout(switchTimeout);
 
         isPlaying = false;
-        document.getElementById("status").innerText = "Status: Stopped";
+        document.getElementById("status").innerText = "Stopped";
         document.getElementById("playPause").innerText = "Play";
       }
     });
 
-    document.getElementById("randomness").addEventListener("input", (event) => {
-      randomnessLevel = event.target.value;
-      document.getElementById("randomnessValue").innerText = randomnessLevel;
-      console.log(`Randomness Level: ${randomnessLevel}`);
+    const dialKnob = document.getElementById("dialKnob");
+    const randomnessControl = document.getElementById("randomnessControl");
+    const label = document.getElementById("label");
+    let angle = 0;
+
+    randomnessControl.addEventListener("mousedown", (e) => {
+      randomnessControl.classList.add("active");
+
+      function rotateDial(event) {
+        const rect = randomnessControl.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        const dx = event.clientX - centerX;
+        const dy = event.clientY - centerY;
+
+        const newAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+        angle = Math.max(0, Math.min(270, newAngle));
+        dialKnob.style.transform = `rotate(${angle}deg)`;
+
+        randomnessLevel = Math.round((angle / 270) * 10);
+        randomnessLevel = Math.max(1, randomnessLevel);
+        label.textContent = `Randomness: ${randomnessLevel}`;
+      }
+
+      function stopRotating() {
+        randomnessControl.classList.remove("active");
+        window.removeEventListener("mousemove", rotateDial);
+        window.removeEventListener("mouseup", stopRotating);
+      }
+
+      window.addEventListener("mousemove", rotateDial);
+      window.addEventListener("mouseup", stopRotating);
     });
   </script>
 </body>
