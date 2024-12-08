@@ -27,11 +27,11 @@
       margin-bottom: 40px;
     }
 
-    /* Play button styling */
+    /* 3D solid yellow play button */
     #playPause {
       width: 120px;
       height: 120px;
-      background: #ffe550;
+      background: #ffe550; /* Solid yellow */
       border: none;
       border-radius: 50%;
       box-shadow: 0px 4px 10px rgba(255, 133, 12, 0.4);
@@ -177,11 +177,8 @@
     // Play/Pause functionality
     document.getElementById("playPause").addEventListener("click", async () => {
       if (!isPlaying) {
-        if (audioBuffers.length === 0) {
-          await loadAudio(); // Load audio on the first play
-        }
+        if (audioBuffers.length === 0) await loadAudio(); // Load audio on the first play
 
-        audioContext.resume(); // Resume audio context (required for modern browsers)
         isPlaying = true;
         document.getElementById("status").innerText = "Playing...";
         document.getElementById("playPause").innerText = "Pause";
@@ -235,4 +232,3 @@
   </script>
 </body>
 </html>
-
