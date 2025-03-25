@@ -51,9 +51,9 @@
 
     /* Dial Styling */
     #randomnessControl {
-        width: 200px;
+      width: 200px;
       height: 200px;
-      background: radial-gradient(circle, #ffe5500 0%, #ffe550 80%);
+      background: radial-gradient(circle, #ffe550 0%, #ffe550 80%);
       border-radius: 50%;
       box-shadow: rgba(255, 133, 12, 0.4);
       position: relative;
@@ -64,7 +64,7 @@
     #randomnessControl.active {
       box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3), 
                   inset 0px 5px 15px rgba(255, 255, 255, 0.5), 
-                  0px 0px 20px rgba(255, 238, 0, 0.8); /* Yellow glow */
+                  0px 0px 20px rgba(255, 238, 0, 0.8);
     }
 
     #dialKnob {
@@ -109,7 +109,7 @@
   <p id="label">randomness: 5</p>
 
   <script>
-    const songFiles = ["song1.wav", "song2.wav", "song3.wav"]; // Replace with actual .wav file paths
+    const songFiles = ["song1.wav", "song2.wav", "song3.wav"]; // Replace with actual file paths
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audioBuffers = [];
     let isPlaying = false;
@@ -177,34 +177,53 @@
     const label = document.getElementById("label");
     let angle = 0;
 
-    randomnessControl.addEventListener("mousedown", (e) => {
+    randomnessControl.addEventListener("mousedown", startRotating);
+    randomnessControl.addEventListener("touchstart", startRotating, { passive: false });
+
+    function startRotating(e) {
+      e.preventDefault();
       randomnessControl.classList.add("active");
-
-      function rotateDial(event) {
-        const rect = randomnessControl.getBoundingClientRect();
-        const centerX = rect.left + rect.width / 2;
-        const centerY = rect.top + rect.height / 2;
-        const dx = event.clientX - centerX;
-        const dy = event.clientY - centerY;
-
-        const newAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-        angle = Math.max(0, Math.min(270, newAngle));
-        dialKnob.style.transform = `rotate(${angle}deg)`;
-
-        randomnessLevel = Math.round((angle / 270) * 10);
-        randomnessLevel = Math.max(1, randomnessLevel);
-        label.textContent = `Randomness: ${randomnessLevel}`;
-      }
-
-      function stopRotating() {
-        randomnessControl.classList.remove("active");
-        window.removeEventListener("mousemove", rotateDial);
-        window.removeEventListener("mouseup", stopRotating);
-      }
 
       window.addEventListener("mousemove", rotateDial);
       window.addEventListener("mouseup", stopRotating);
-    });
+
+      window.addEventListener("touchmove", rotateDial, { passive: false });
+      window.addEventListener("touchend", stopRotating);
+    }
+
+    function rotateDial(event) {
+      let clientX, clientY;
+
+      if (event.touches) {
+        clientX = event.touches[0].clientX;
+        clientY = event.touches[0].clientY;
+      } else {
+        clientX = event.clientX;
+        clientY = event.clientY;
+      }
+
+      const rect = randomnessControl.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = clientX - centerX;
+      const dy = clientY - centerY;
+
+      const newAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      angle = Math.max(0, Math.min(270, newAngle));
+      dialKnob.style.transform = `rotate(${angle}deg)`;
+
+      randomnessLevel = Math.round((angle / 270) * 10);
+      randomnessLevel = Math.max(1, randomnessLevel);
+      label.textContent = `Randomness: ${randomnessLevel}`;
+    }
+
+    function stopRotating() {
+      randomnessControl.classList.remove("active");
+      window.removeEventListener("mousemove", rotateDial);
+      window.removeEventListener("mouseup", stopRotating);
+      window.removeEventListener("touchmove", rotateDial);
+      window.removeEventListener("touchend", stopRotating);
+    }
   </script>
 </body>
 </html>
