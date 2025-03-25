@@ -145,7 +145,7 @@
       currentSource = playBuffer(audioBuffers[activeIndex], elapsedTime);
       console.log(`Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s`);
 
-      const nextSwitchTime = Math.random() * (2000 / randomnessLevel) + (1000 / randomnessLevel);
+      const nextSwitchTime = Math.random() * (4000 / randomnessLevel) + (2000 / randomnessLevel);
       clearTimeout(switchTimeout);
       switchTimeout = setTimeout(switchTrack, nextSwitchTime);
     }
@@ -191,7 +191,7 @@
         angle = Math.max(0, Math.min(270, newAngle));
         dialKnob.style.transform = `rotate(${angle}deg)`;
 
-        randomnessLevel = Math.round((angle / 270) * 5);
+        randomnessLevel = Math.round((angle / 270) * 10);
         randomnessLevel = Math.max(1, randomnessLevel);
         label.textContent = `Randomness: ${randomnessLevel}`;
       }
