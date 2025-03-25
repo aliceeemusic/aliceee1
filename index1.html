@@ -191,7 +191,7 @@
         angle = Math.max(0, Math.min(270, newAngle));
         dialKnob.style.transform = `rotate(${angle}deg)`;
 
-        randomnessLevel = Math.round((angle / 270) * 10);
+        randomnessLevel = Math.round((angle / 270) * 5);
         randomnessLevel = Math.max(1, randomnessLevel);
         label.textContent = `Randomness: ${randomnessLevel}`;
       }
