@@ -5,56 +5,118 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>player.</title>
   <style>
+    /* Body Styling */
     body {
       font-family: Arial, sans-serif;
       text-align: center;
+      color: rgba(255, 133, 12, 0.4);
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-color: rgba(255, 231, 97, 1);
+      background-color: rgba(255, 231, 97, 255);
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      transition: background-color 0.1s;
     }
 
+    /* Title Styling */
     h1 {
       color: #ffff88;
       font-size: 2.5rem;
       margin-bottom: 40px;
     }
 
+    /* Play/Pause Button Styling */
     #playPause {
       width: 120px;
       height: 120px;
-      background: rgba(255, 231, 97, 1);
+      background: rgba(255, 231, 97, 255);
       border: none;
       border-radius: 50%;
       box-shadow: 0px 4px 10px rgba(255, 133, 12, 0.4);
       cursor: pointer;
       font-size: 24px;
       font-weight: bold;
-      color: rgba(255, 133, 12, 0.8);
+      color: rgba(255, 231, 97, 255);
       display: flex;
       align-items: center;
       justify-content: center;
       margin-bottom: 40px;
     }
+
+    #playPause:active {
+      box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.4), inset 0px 2px 6px rgba(255, 255, 255, 0.3);
+    }
+
+    /* Dial Styling */
+    #randomnessControl {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ffe5500 0%, #ffe550 80%);
+      border-radius: 50%;
+      box-shadow: rgba(255, 133, 12, 0.4);
+      position: relative;
+      margin-bottom: 40px;
+      transition: box-shadow 0.2s;
+    }
+
+    #randomnessControl.active {
+      box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3), 
+                  inset 0px 5px 15px rgba(255, 255, 255, 0.5), 
+                  0px 0px 20px rgba(255, 238, 0, 0.8);
+    }
+
+    #dialKnob {
+      width: 20px;
+      height: 20px;
+      background: #ffe550;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 90px;
+      transform-origin: 50% 90px;
+      transform: rotate(0deg);
+    }
+
+    #dialDot {
+      width: 8px;
+      height: 8px;
+      background: #ffdc19;
+      border-radius: 50%;
+      position: absolute;
+      top: 6px;
+      left: 6px;
+    }
+
+    /* Randomness Level Label */
+    #label {
+      font-size: 18px;
+      color: #fff129;
+    }
   </style>
 </head>
 <body>
   <h1>player.</h1>
-  <button id="playPause">Play</button>
-  <p id="status">Stopped</p>
+  <button id="playPause"></button>
+  <p id="status">stopped</p>
+
+  <div id="randomnessControl">
+    <div id="dialKnob">
+      <div id="dialDot"></div>
+    </div>
+  </div>
+  <p id="label">randomness: 5</p>
 
   <script>
-    const songFiles = ["song1.wav", "song2.wav", "song3.wav"];
+    const songFiles = ["song1.wav", "song2.wav", "song3.wav"]; // Replace with actual file paths
     const audioContext = new (window.AudioContext || window.webkitAudioContext)();
     const audioBuffers = [];
     let isPlaying = false;
     let currentSource = null;
-    let analyser, dataArray;
+    let playbackStartTime = 0;
+    let switchTimeout = null;
+    let randomnessLevel = 5;
 
     async function loadAudioFiles() {
       for (const file of songFiles) {
@@ -66,42 +128,102 @@
       }
     }
 
-    function playBuffer(buffer) {
+    function playBuffer(buffer, startTime) {
       const source = audioContext.createBufferSource();
       source.buffer = buffer;
-      analyser = audioContext.createAnalyser();
-      source.connect(analyser);
-      analyser.connect(audioContext.destination);
-      analyser.fftSize = 256;
-      dataArray = new Uint8Array(analyser.frequencyBinCount);
-      source.start();
-      animateBackground();
+      source.connect(audioContext.destination);
+      source.start(0, startTime % buffer.duration);
       return source;
     }
 
-    function animateBackground() {
-      if (!isPlaying) return;
-      requestAnimationFrame(animateBackground);
-      analyser.getByteFrequencyData(dataArray);
-      let avgFrequency = dataArray.reduce((a, b) => a + b) / dataArray.length;
-      let intensity = Math.min(1, avgFrequency / 256);
-      document.body.style.backgroundColor = `rgba(255, ${231 + intensity * 24}, 97, 1)`;
+    function switchTrack() {
+      const activeIndex = Math.floor(Math.random() * audioBuffers.length);
+      const elapsedTime = audioContext.currentTime - playbackStartTime;
+
+      if (currentSource) currentSource.stop();
+
+      currentSource = playBuffer(audioBuffers[activeIndex], elapsedTime);
+      console.log(`Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s`);
+
+      const nextSwitchTime = Math.random() * (10000 / randomnessLevel) + (5000 / randomnessLevel);
+      clearTimeout(switchTimeout);
+      switchTimeout = setTimeout(switchTrack, nextSwitchTime);
     }
 
     document.getElementById("playPause").addEventListener("click", async () => {
       if (!isPlaying) {
         if (audioBuffers.length === 0) await loadAudioFiles();
-        currentSource = playBuffer(audioBuffers[0]);
+
+        playbackStartTime = audioContext.currentTime;
+        currentSource = playBuffer(audioBuffers[0], 0);
         isPlaying = true;
-        document.getElementById("status").innerText = "Playing...";
-        document.getElementById("playPause").innerText = "Pause";
+
+        document.getElementById("status").innerText = "playing...";
+        document.getElementById("playPause").innerText = ".";
+
+        switchTrack();
       } else {
         if (currentSource) currentSource.stop();
+        clearTimeout(switchTimeout);
+
         isPlaying = false;
         document.getElementById("status").innerText = "Stopped";
         document.getElementById("playPause").innerText = "Play";
       }
     });
+
+    const dialKnob = document.getElementById("dialKnob");
+    const randomnessControl = document.getElementById("randomnessControl");
+    const label = document.getElementById("label");
+    let angle = 0;
+
+    randomnessControl.addEventListener("mousedown", startRotating);
+    randomnessControl.addEventListener("touchstart", startRotating, { passive: false });
+
+    function startRotating(e) {
+      e.preventDefault();
+      randomnessControl.classList.add("active");
+
+      window.addEventListener("mousemove", rotateDial);
+      window.addEventListener("mouseup", stopRotating);
+
+      window.addEventListener("touchmove", rotateDial, { passive: false });
+      window.addEventListener("touchend", stopRotating);
+    }
+
+    function rotateDial(event) {
+      let clientX, clientY;
+
+      if (event.touches) {
+        clientX = event.touches[0].clientX;
+        clientY = event.touches[0].clientY;
+      } else {
+        clientX = event.clientX;
+        clientY = event.clientY;
+      }
+
+      const rect = randomnessControl.getBoundingClientRect();
+      const centerX = rect.left + rect.width / 2;
+      const centerY = rect.top + rect.height / 2;
+      const dx = clientX - centerX;
+      const dy = clientY - centerY;
+
+      const newAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+      angle = Math.max(0, Math.min(270, newAngle));
+      dialKnob.style.transform = `rotate(${angle}deg)`;
+
+      randomnessLevel = Math.round((angle / 270) * 10);
+      randomnessLevel = Math.max(1, randomnessLevel);
+      label.textContent = `Randomness: ${randomnessLevel}`;
+    }
+
+    function stopRotating() {
+      randomnessControl.classList.remove("active");
+      window.removeEventListener("mousemove", rotateDial);
+      window.removeEventListener("mouseup", stopRotating);
+      window.removeEventListener("touchmove", rotateDial);
+      window.removeEventListener("touchend", stopRotating);
+    }
   </script>
 </body>
 </html>
