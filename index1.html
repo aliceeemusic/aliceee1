@@ -145,7 +145,7 @@
       currentSource = playBuffer(audioBuffers[activeIndex], elapsedTime);
       console.log(`Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s`);
 
-      const nextSwitchTime = Math.random() * (4000 / randomnessLevel) + (2000 / randomnessLevel);
+      const nextSwitchTime = Math.random() * (10000 / randomnessLevel) + (5000 / randomnessLevel);
       clearTimeout(switchTimeout);
       switchTimeout = setTimeout(switchTrack, nextSwitchTime);
     }
