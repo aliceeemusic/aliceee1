@@ -11,12 +11,13 @@
       margin: 0;
       padding: 0;
       height: 100vh;
-      background-color: black;
+      background-color: #ffe550;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
       overflow: hidden;
+      transition: background-color 0.2s ease;
     }
     
     .scanlines {
@@ -54,7 +55,36 @@
       cursor: pointer;
       font-size: 24px;
       font-weight: bold;
+      background-color: #ffea70;
       transition: background-color 0.2s ease;
+    }
+    
+    #randomnessControl {
+      width: 200px;
+      height: 200px;
+      background: radial-gradient(circle, #ffe550 0%, #ffd700 80%);
+      border-radius: 50%;
+      position: relative;
+      margin-top: 20px;
+      transition: box-shadow 0.2s;
+    }
+    
+    #dialKnob {
+      width: 20px;
+      height: 20px;
+      background: #ffcc00;
+      border-radius: 50%;
+      position: absolute;
+      top: 15px;
+      left: 90px;
+      transform-origin: 50% 90px;
+      transform: rotate(0deg);
+      transition: transform 0.2s ease-out;
+    }
+    
+    #label {
+      font-size: 18px;
+      color: #ffcc00;
     }
   </style>
 </head>
@@ -62,6 +92,9 @@
   <h1>player.</h1>
   <button id="playPause">Play</button>
   <p id="status">stopped</p>
+  <div id="randomnessControl">
+    <div id="dialKnob"></div>
+  </div>
   <p id="label">randomness: 5</p>
   <div class="scanlines"></div>
   
@@ -72,6 +105,7 @@
     analyser.fftSize = 256;
     const audioBuffers = [];
     let isPlaying = false, currentSource = null;
+    let randomnessLevel = 5;
     const frequencyData = new Uint8Array(analyser.frequencyBinCount);
     
     async function loadAudioFiles() {
@@ -95,11 +129,9 @@
     function visualize() {
       analyser.getByteFrequencyData(frequencyData);
       const avgFreq = frequencyData.reduce((a, b) => a + b) / frequencyData.length;
-      const colorIntensity = Math.min(255, avgFreq * 2);
-      
-      document.body.style.backgroundColor = `rgb(${colorIntensity}, 0, ${255 - colorIntensity})`;
-      document.querySelector("h1").style.color = `rgb(255, ${colorIntensity}, 100)`;
-      document.getElementById("playPause").style.backgroundColor = `rgb(${255 - colorIntensity}, ${colorIntensity}, 50)`;
+      const colorOffset = Math.min(30, avgFreq / 5);
+      document.body.style.backgroundColor = `rgb(255, ${230 + colorOffset}, ${80 + colorOffset})`;
+      document.getElementById("playPause").style.backgroundColor = `rgb(255, ${230 - colorOffset}, ${100 - colorOffset})`;
       requestAnimationFrame(visualize);
     }
 
