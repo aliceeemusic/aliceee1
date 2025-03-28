@@ -1,4 +1,3 @@
-You said:
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -125,7 +124,7 @@ You said:
         const arrayBuffer = await response.arrayBuffer();
         const audioBuffer = await audioContext.decodeAudioData(arrayBuffer);
         audioBuffers.push(audioBuffer);
-        console.log(Loaded ${file});
+        console.log(`Loaded ${file}`);
       }
     }
 
@@ -144,7 +143,7 @@ You said:
       if (currentSource) currentSource.stop();
 
       currentSource = playBuffer(audioBuffers[activeIndex], elapsedTime);
-      console.log(Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s);
+      console.log(`Switched to track: ${activeIndex}, Elapsed Time: ${elapsedTime.toFixed(2)}s`);
 
       const nextSwitchTime = Math.random() * (10000 / randomnessLevel) + (5000 / randomnessLevel);
       clearTimeout(switchTimeout);
@@ -211,11 +210,11 @@ You said:
 
       const newAngle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
       angle = Math.max(0, Math.min(270, newAngle));
-      dialKnob.style.transform = rotate(${angle}deg);
+      dialKnob.style.transform = `rotate(${angle}deg)`;
 
       randomnessLevel = Math.round((angle / 270) * 10);
       randomnessLevel = Math.max(1, randomnessLevel);
-      label.textContent = Randomness: ${randomnessLevel};
+      label.textContent = `Randomness: ${randomnessLevel}`;
     }
 
     function stopRotating() {
